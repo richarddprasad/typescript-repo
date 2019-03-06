@@ -1,0 +1,14 @@
+{
+  "name": "typescript-repo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc --watch --preserveWatchOutput"
+  },
+  "author": "Richard Prasad",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^3.3.3333"
+  }
+}
