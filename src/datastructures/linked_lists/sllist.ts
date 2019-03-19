@@ -16,6 +16,7 @@ class SLList<T> {
         return this.head.next === this.tail;
     }
 
+    // This method inserts at the end of the list
     public insert(item: T): void {
         const newNode: Node<T> = new Node<T>(item);
 
@@ -72,7 +73,7 @@ class SLList<T> {
         return rv;
     } // end fn find
 
-    // TODO: delete()
+    // This method deletes a particular item
     public delete(item: T): Node<T> | null {
         let rv: Node<T> | null = null;
 
@@ -91,6 +92,26 @@ class SLList<T> {
         return rv;
 
     } // end fn delete
+
+    // This method deletes the last element in the list
+    public deleteLast(): Node<T> | null {
+        let rv: Node<T> | null = null;
+
+        if (!this.isEmpty()) {
+            let current = this.head;
+            while (current && current.next && current.next.next !== this.tail) {
+                current = current.next;
+            }
+            rv = current.next;
+            current.next = this.tail;
+        }
+        return rv;
+    }
+
+    // TODO: Implement a getLast() method
+    public getLast(): void {
+        
+    }
 
     // Helper methods
 

@@ -61,3 +61,13 @@ slist.delete(13);
 slist.delete(17);
 slist.delete(19);
 listStatus();
+
+console.log("Emptying list from the last element backwards...");
+let removed;
+while (!slist.isEmpty()) {
+    removed = slist.deleteLast();
+    if (removed) {
+        console.log(`Removed ${removed.item}`);
+    }
+}
+listStatus();

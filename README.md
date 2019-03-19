@@ -2,3 +2,5 @@
 
 ### TODO
 * Class Adapter
+* SLList getLast()
+* Stack List peek()
