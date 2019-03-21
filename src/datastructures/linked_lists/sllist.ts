@@ -74,6 +74,7 @@ class SLList<T> {
     } // end fn find
 
     // This method deletes a particular item
+    // and returns it to the client
     public delete(item: T): Node<T> | null {
         let rv: Node<T> | null = null;
 
@@ -86,6 +87,7 @@ class SLList<T> {
             if (current.next) {
                 rv = current.next;
                 current.next = current.next.next;
+                rv.next = null;
             }
         }
 
@@ -94,6 +96,7 @@ class SLList<T> {
     } // end fn delete
 
     // This method deletes the last element in the list
+    // and returns it to the client
     public deleteLast(): Node<T> | null {
         let rv: Node<T> | null = null;
 
@@ -104,6 +107,11 @@ class SLList<T> {
             }
             rv = current.next;
             current.next = this.tail;
+
+            // Make sure the node can be garbage collected
+            if (rv) {
+                rv.next = null;
+            }
         }
         return rv;
     }
@@ -120,9 +128,31 @@ class SLList<T> {
         }
 
         return lastNode ? new Node<T>(lastNode.item) : lastNode;
+    } // end fn getLast
+
+    // This method removes the first node and returns it to the client
+    public deleteFirst(): Node<T> | null {
+        let rv: Node<T> | null = null;
+
+        if (!this.isEmpty()) {
+            if (this.head && this.head.next) {
+                rv = this.head.next;
+                this.head.next = rv.next;
+                rv.next = null;
+            }
+        }
+
+        return rv;
+    } // end fn deleteFirst
+
+    // TODO: Implement getFirst function
+    public getFirst(): Node<T> | null {
+        return null;
     }
 
+    // ************************************
     // Helper methods
+    // ************************************
 
     // This function advances to the node right before the tail node
     private advanceTo(): Node<T> | null {

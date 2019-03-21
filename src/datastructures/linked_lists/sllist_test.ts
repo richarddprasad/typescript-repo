@@ -74,7 +74,7 @@ listStatus();
 
 console.log("\nTesting getLast() on empty list...");
 let last1 = slist.getLast();
-if(!last1) {
+if (!last1) {
     console.log("Got back nothing (which is the desired outcome).")
 }
 
@@ -93,6 +93,28 @@ slist.insert(73);
 slist.insert(1024);
 listStatus();
 let last3 = slist.getLast();
-if(last3) {
+if (last3) {
     console.log("getLast() returned: ", last3.item);
+}
+
+console.log("\nTesting deleteFirst()...");
+let del1 = slist.deleteFirst();
+listStatus();
+if (del1) {
+    console.log("Removed", del1.item);
+}
+
+console.log("\nCalling deleteFirst() 2 more times...");
+slist.deleteFirst();
+let del2 = slist.deleteFirst();
+listStatus();
+if (del2) {
+    console.log("Removed item is", del2.item);
+}
+
+console.log("\nTesting deleteFirst() on empty list...");
+let del3 = slist.deleteFirst();
+listStatus();
+if (!del3) {
+    console.log("Nothing was removed, list empty.");
 }
