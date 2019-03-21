@@ -27,11 +27,18 @@ class StackList<T> {
         return rv;
     }
 
-    // TODO: Implement a peek() method
-    public peek(): void {
+    public peek(): Node<T> | null {
+        let rv: Node<T> | null = null;
 
+        if (!this.isEmpty()) {
+            rv = this.list.getLast();
+        } else {
+            throw new Error("Stack is empty");
+        }
+
+        return rv;
     }
-    
+
     // Debugger method
     public printContents(): void {
         this.list.printContents();
@@ -49,7 +56,7 @@ function stackStatus(): void {
         stackList.printContents();
     }
 
-    console.log("\n");
+    // console.log("\n");
 }
 
 const stackList = new StackList<number>();
@@ -88,3 +95,21 @@ while (!stackList.isEmpty()) {
 }
 stackStatus();
 
+console.log("\nPeeking into empty stack... (should crash)");
+// stackList.peek();
+
+console.log("\nPeeking into stack with 1 element...");
+stackList.push(42);
+stackStatus();
+let peeked1 = stackList.peek();
+if (peeked1) {
+    console.log("Got back ", peeked1.item);
+}
+
+console.log("\nPeeking into stack with 2 elements...");
+stackList.push(73);
+stackStatus();
+let peeked2 = stackList.peek();
+if (peeked2) {
+    console.log("Got back ", peeked2.item);
+}

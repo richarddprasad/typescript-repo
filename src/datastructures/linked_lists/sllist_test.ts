@@ -71,3 +71,28 @@ while (!slist.isEmpty()) {
     }
 }
 listStatus();
+
+console.log("\nTesting getLast() on empty list...");
+let last1 = slist.getLast();
+if(!last1) {
+    console.log("Got back nothing (which is the desired outcome).")
+}
+
+console.log("\nInserting one element...");
+slist.insert(42);
+listStatus();
+
+console.log("Getting last element...");
+let last2 = slist.getLast();
+if (last2) {
+    console.log("Last item: ", last2.item);
+}
+
+console.log("\nInserting a few more elements and testing getLast()...");
+slist.insert(73);
+slist.insert(1024);
+listStatus();
+let last3 = slist.getLast();
+if(last3) {
+    console.log("getLast() returned: ", last3.item);
+}

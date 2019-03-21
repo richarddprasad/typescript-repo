@@ -108,9 +108,18 @@ class SLList<T> {
         return rv;
     }
 
-    // TODO: Implement a getLast() method
-    public getLast(): void {
-        
+    // This method returns a copy of the last node
+    public getLast(): Node<T> | null {
+        let lastNode: Node<T> | null = null;
+
+        if (!this.isEmpty()) {
+            lastNode = this.head;
+            while (lastNode && lastNode.next !== this.tail) {
+                lastNode = lastNode.next;
+            }
+        }
+
+        return lastNode ? new Node<T>(lastNode.item) : lastNode;
     }
 
     // Helper methods
