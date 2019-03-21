@@ -118,3 +118,25 @@ listStatus();
 if (!del3) {
     console.log("Nothing was removed, list empty.");
 }
+
+console.log("\nTesting getFirst() on empty list...");
+let test5 = slist.getFirst();
+if (!test5) {
+    console.log("Nothing to get...");
+}
+
+console.log("\nTesting getFirst() on list with 1 element...");
+slist.insert(2019);
+let test6 = slist.getFirst();
+listStatus();
+if (test6) {
+    console.log("Got", test6.item);
+}
+
+console.log("\nTesting getFirst() on list with 2 elements...");
+slist.insert(3001);
+let test7 = slist.getFirst();
+listStatus();
+if (test7) {
+    console.log("Got", test7.item);
+}

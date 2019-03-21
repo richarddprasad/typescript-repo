@@ -17,12 +17,21 @@ class QueueList<T> {
     }
 
     public dequeue(): Node<T> | null {
+        if (this.list.isEmpty()) {
+            throw new Error("Queue underflow");
+        }
         return this.list.deleteFirst();
     }
 
-    // TODO: Implement
-    public peek(): void {
+    public peek(): Node<T> | null {
+        let rv: Node<T> | null = null;
 
+        if (!this.list.isEmpty()) {
+            rv = this.list.getFirst();
+        } else {
+            throw new Error("Queue is empty");
+        }
+        return rv;
     }
 
     // For debugging

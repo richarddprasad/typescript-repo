@@ -145,9 +145,17 @@ class SLList<T> {
         return rv;
     } // end fn deleteFirst
 
-    // TODO: Implement getFirst function
+    // This method returns a copy of the first node
     public getFirst(): Node<T> | null {
-        return null;
+        let rv: Node<T> | null = null;
+
+        if (!this.isEmpty()) {
+            if (this.head.next) {
+                rv = new Node<T>(this.head.next.item);
+            }
+        }
+
+        return rv;
     }
 
     // ************************************
