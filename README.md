@@ -2,4 +2,6 @@
 
 ### TODO
 * Class Adapter
+* Array-based Queue
+* Doubly-Linked List
 
