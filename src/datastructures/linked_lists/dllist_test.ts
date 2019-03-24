@@ -40,6 +40,12 @@ if (!del1) {
     console.log("Could not delete 1 from empty list");
 }
 
+console.log(`deleteFirst(1) on empty list...`);
+let delFirst = dlist.deleteFirst();
+if (!delFirst) {
+    console.log("Couldn't deleteFirst(1) on empty list");
+}
+
 // ********************************
 
 console.log("\nInserting 1st element...");
@@ -108,12 +114,66 @@ if (find3) {
 
 console.log(`\nMany element-list contains() 7? ${dlist.contains(7)}`);
 
-const num = 9;
-console.log(`\nDeleting ${num} from empty list...`);
+const num = 7;
+console.log(`\nDeleting ${num} from non-empty list...`);
 let del3 = dlist.delete(num);
 if (del3) {
     console.log(`Deleted ${num} from 1-element list -->`, del3.item);
 }
 listStatus();
 
+console.log(`\ndeleteFirst() on non-empty list...`);
+let delFirst2 = dlist.deleteFirst();
+if (delFirst2) {
+    console.log(`Deleted ${delFirst2.item} from non-empty list`);
+}
+listStatus();
+
 // ********************************
+
+console.log("Emptying out the list using deleteFirst()...");
+let t1;
+while (!dlist.isEmpty()) {
+    t1 = dlist.deleteFirst();
+    if (t1) {
+        console.log(`Deleting ${t1.item}`);
+    }
+}
+listStatus();
+
+// ********************************
+
+let delLast1 = dlist.deleteLast();
+if (!delLast1) {
+    console.log(`\ndeleteLast() on empty list failed`);
+}
+
+dlist.insert(1);
+listStatus();
+let delLast2 = dlist.deleteLast();
+if (delLast2) {
+    console.log(`\ndeleteLast() on 1-element list --> ${delLast2.item}`);
+}
+listStatus();
+
+dlist.insert(1);
+dlist.insert(2);
+dlist.insert(3);
+
+listStatus();
+let delLast3 = dlist.deleteLast();
+if (delLast3) {
+    console.log(`\ndeleteLast() on several-element list --> ${delLast3.item}`);
+}
+listStatus();
+
+console.log("\nEmptying out list using deleteLast()...");
+let t2;
+while (!dlist.isEmpty()) {
+    t2 = dlist.deleteLast();
+    if (t2) {
+        console.log(`Deleted ${t2.item}`);
+    }
+}
+listStatus();
+

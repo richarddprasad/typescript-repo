@@ -46,11 +46,35 @@ class DLList<T> {
     }
 
     public deleteFirst(): DNode<T> | null {
-        return null;
+        let rv: DNode<T> | null = null;
+        if (!this.isEmpty() && this.head) {
+            let temp = this.head.next;
+
+            if (temp && temp.next && temp.prev) {
+                temp.next.prev = this.head;
+                temp.prev.next = temp.next;
+                temp.next = null;
+                temp.prev = null;
+                rv = temp;
+            }
+        }
+        return rv;
     }
 
     public deleteLast(): DNode<T> | null {
-        return null;
+        let rv: DNode<T> | null = null;
+        if (!this.isEmpty() && this.tail) {
+            let temp = this.tail.prev;
+
+            if (temp && temp.next && temp.prev) {
+                this.tail.prev = temp.prev;
+                temp.prev.next = this.tail;
+                temp.next = null;
+                temp.prev = null;
+                rv = temp;
+            }
+        }
+        return rv;
     }
 
     public getLast(): DNode<T> | null {
@@ -86,26 +110,43 @@ class DLList<T> {
     public delete(item: T): DNode<T> | null {
         let rv: DNode<T> | null = null;
 
-        if (!this.isEmpty() && this.contains(item)) {
-            let current: DNode<T> | null = this.head;
-            while (current && current.next && current.next.item !== item) {
-                current = current.next;
+        // if (!this.isEmpty() && this.contains(item)) {
+        //     let current: DNode<T> | null = this.head;
+        //     while (current && current.next && current.next.item !== item) {
+        //         current = current.next;
+        //     }
+
+        //     if (current && current.next) {
+        //         let temp: DNode<T> | null = current.next;
+        //         current.next = temp.next;
+
+        //         if (temp.next) {
+        //             temp.next.prev = current;
+        //         }
+
+        //         temp.next = null;
+        //         temp.prev = null;
+
+        //         rv = temp;
+        //     }
+        // }
+
+        // Simpler, more elegant version of the code
+        if (!this.isEmpty() && this.contains(item) && this.head) {
+            let temp: DNode<T> | null = this.head.next;
+            while (temp && temp.item !== item) {
+                temp = temp.next;
             }
 
-            if (current && current.next) {
-                let temp: DNode<T> | null = current.next;
-                current.next = temp.next;
-
-                if (temp.next) {
-                    temp.next.prev = current;
-                }
-
+            if (temp && temp.next && temp.prev) {
+                temp.next.prev = temp.prev;
+                temp.prev.next = temp.next;
                 temp.next = null;
                 temp.prev = null;
-
                 rv = temp;
             }
         }
+
         return rv;
     }
 
