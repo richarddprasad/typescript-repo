@@ -1,0 +1,1 @@
+Just playing around with implementing design patterns in ES6 instead of TypeScript. The code is not touched by the TypeScript compiler and thus not outputted into the "out" directory. Run it directly from here.

@@ -3,5 +3,7 @@
 ### TODO
 * Class Adapter
 * Array-based Queue
-* Doubly-Linked List
 
+
+JavaScript code is outputted to a directory named "out"
+cd into out and use node filename.js to run the code
