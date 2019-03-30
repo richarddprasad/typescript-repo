@@ -1,4 +1,3 @@
-import MinPQ from './MinPQ';
 import PNode from '../../common/pnode';
 
 interface IMinPQ<T> {
