@@ -1,4 +1,5 @@
 import Bucket from './bucket';
+import Hash from '../../common/hash';
 
 class HashTable<T> {
     private buckets: Array<Bucket<T>>;
@@ -13,7 +14,14 @@ class HashTable<T> {
 
     public isEmpty(): boolean {
         let rv = this.buckets.every(b => b.isEmpty());
+        console.log(`*** RV = ${rv} ***`);
         return rv;
+    }
+
+    public insert(item: T & Hash): void {
+        let hashIndex = item.hash(this.max);
+        console.log(`*** HASH INDEX = ${hashIndex}`);
+        this.buckets[hashIndex].insert(item);
     }
 
     // For debugging
