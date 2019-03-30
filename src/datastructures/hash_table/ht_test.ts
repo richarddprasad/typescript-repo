@@ -9,7 +9,9 @@ function htStatus() {
 
     if (!isEmpty) {
         console.log("Printing HT Contents:");
+        ht.printContents();
     }
+    console.log("-----------------------------------------\n");
 }
 
 console.log("Creating a new hash table of type Person...");
@@ -30,3 +32,58 @@ console.log("Inserting 1 person...");
 ht.insert(p2);
 htStatus();
 
+console.log("Inserting 2nd person with colliding key...");
+ht.insert(p4);
+htStatus();
+
+console.log("Deleting 'Steve Jobs'...");
+ht.delete(p4);
+htStatus();
+
+console.log("Deleting 'Philip Fry'...");
+ht.delete(p2);
+htStatus();
+
+console.log("Inserting all Persons...");
+ht.insert(p1);
+ht.insert(p2);
+ht.insert(p3);
+ht.insert(p4);
+htStatus();
+
+console.log(`Contains 'Al Bundy'? ${ht.contains(p3)}`);
+let p5 = new Person('Bill', 'Gates', 2345, 'French');
+console.log(`Contains 'Bill Gates'? ${ht.contains(p5)}`);
+ht.insert(p5);
+console.log(`Contains 'Bill Gates' after insertion? ${ht.contains(p5)}`);
+htStatus();
+
+console.log("Testing find() for 'Homer Simpson'...");
+let find1 = ht.find(p1);
+if (find1) {
+    let obj = find1.item;
+    console.log(obj);
+}
+
+console.log("Deleting 'Homer Simpson'...");
+ht.delete(p1);
+console.log("Testing find() again for 'Homer Simpson'...");
+find1 = ht.find(p1);
+if (!find1) {
+    console.log("'Homer Simpson' not found");
+}
+htStatus();
+
+console.log("Testing find() on slot with collision...");
+let find2 = ht.find(p2);
+if (find2) {
+    let obj = find2.item;
+    console.log("Found:")
+    console.log(obj);
+}
+find2 = ht.find(p4);
+if (find2) {
+    let obj = find2.item;
+    console.log("Found:")
+    console.log(obj);
+}
