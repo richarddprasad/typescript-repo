@@ -11,23 +11,24 @@ console.log("Creating an undirected, unweighted graph...");
 const graph = new Graph();
 graphStatus();
 
-let v1 = new Vertex("Sacramento");
+let v1 = new Vertex("Sacramento", ["San Francisco", "Portland", "Reno"]);
+v1.vertexDetail();
 console.log("Inserting 1st vertex...");
 graph.addVertex(v1);
 graphStatus();
 
 console.log("Inserting several vertices...");
-v1 = new Vertex("Roseville");
+v1 = new Vertex("Roseville", ["Portland"]);
 graph.addVertex(v1);
-v1 = new Vertex("Portland");
+v1 = new Vertex("Portland", ["Los Angeles", "Seattle"]);
 graph.addVertex(v1);
-v1 = new Vertex("San Francisco");
+v1 = new Vertex("San Francisco", []);
 graph.addVertex(v1);
-v1 = new Vertex("Los Angeles");
+v1 = new Vertex("Los Angeles", []);
 graph.addVertex(v1);
-v1 = new Vertex("Reno");
+v1 = new Vertex("Reno", []);
 graph.addVertex(v1);
-v1 = new Vertex("Seattle");
+v1 = new Vertex("Seattle", []);
 graph.addVertex(v1);
 graphStatus();
 
