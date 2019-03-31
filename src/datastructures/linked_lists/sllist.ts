@@ -2,8 +2,8 @@
 import Node from '../../common/node';
 
 class SLList<T> {
-    private head: Node<T>;
-    private tail: Node<T>;
+    private head: Node<T> | null;
+    private tail: Node<T> | null;
 
     constructor() {
         this.head = new Node<T>();
@@ -13,14 +13,15 @@ class SLList<T> {
     }
 
     public isEmpty(): boolean {
-        return this.head.next === this.tail;
+        return this.head != null &&
+            this.head.next === this.tail;
     }
 
     // This method inserts at the end of the list
     public insert(item: T): void {
         const newNode: Node<T> = new Node<T>(item);
 
-        if (this.isEmpty()) {
+        if (this.isEmpty() && this.head) {
             newNode.next = this.tail;
             this.head.next = newNode;
         } else {
@@ -39,7 +40,7 @@ class SLList<T> {
         let rv: boolean = false;
         let searchNode: Node<T> = new Node<T>(item);
 
-        if (!this.isEmpty()) {
+        if (!this.isEmpty() && this.head) {
             let current: Node<T> | null = this.head.next;
             while (current != null && current !== this.tail) {
                 if (current.item === searchNode.item) {
@@ -55,15 +56,17 @@ class SLList<T> {
 
 
     // This method returns the node the sought-after item is in, if it exists
-    public find(item: T): Node<T> | null {
-        let rv: Node<T> | null = null;
-        let searchNode: Node<T> = new Node<T>(item);
+    public find(item: T): T | null {
+        let rv: T | null = null;
+        let searchNode: Node<T> | null = new Node<T>(item);
 
-        if (!this.isEmpty()) {
+        if (!this.isEmpty() && this.head) {
             let current: Node<T> | null = this.head.next;
             while (current && current !== this.tail) {
                 if (current.item === searchNode.item) {
-                    rv = current;
+                    if (current.item) {
+                        rv = current.item;
+                    }
                     break;
                 }
                 current = current.next;
@@ -80,11 +83,11 @@ class SLList<T> {
 
         if (this.contains(item)) {
             // console.log(`${item} was found in the list`);
-            let current: Node<T> = this.head;
-            while (current.next && current.next.item !== item) {
+            let current: Node<T> | null = this.head;
+            while (current && current.next && current.next.item !== item) {
                 current = current.next;
             }
-            if (current.next) {
+            if (current && current.next) {
                 rv = current.next;
                 current.next = current.next.next;
                 rv.next = null;
@@ -105,8 +108,11 @@ class SLList<T> {
             while (current && current.next && current.next.next !== this.tail) {
                 current = current.next;
             }
-            rv = current.next;
-            current.next = this.tail;
+
+            if (current) {
+                rv = current.next;
+                current.next = this.tail;
+            }
 
             // Make sure the node can be garbage collected
             if (rv) {
@@ -149,7 +155,7 @@ class SLList<T> {
     public getFirst(): Node<T> | null {
         let rv: Node<T> | null = null;
 
-        if (!this.isEmpty()) {
+        if (!this.isEmpty() && this.head) {
             if (this.head.next) {
                 rv = new Node<T>(this.head.next.item);
             }
@@ -164,19 +170,24 @@ class SLList<T> {
 
     // This function advances to the node right before the tail node
     private advanceTo(): Node<T> | null {
-        let current: Node<T> | null = this.head.next;
-        while (current && current.next !== this.tail) {
-            current = current.next;
+        if (this.head) {
+            let current: Node<T> | null = this.head.next;
+            while (current && current.next !== this.tail) {
+                current = current.next;
+            }
+            return current;
         }
-        return current;
+        return null;
     }
 
     // For debugging
     public printContents(): void {
-        let current: Node<T> | null = this.head.next;
-        while (current && current !== this.tail) {
-            console.log(current.item);
-            current = current.next;
+        if (this.head) {
+            let current: Node<T> | null = this.head.next;
+            while (current && current !== this.tail) {
+                console.log(current.item);
+                current = current.next;
+            }
         }
     }
 }

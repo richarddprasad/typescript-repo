@@ -68,7 +68,7 @@ if (last2) {
 
 let find2 = dlist.find(1);
 if (find2) {
-    console.log("\nList with 1 element contains 1?: Yes -->", find2.item);
+    console.log("\nList with 1 element contains 1?: Yes -->", find2);
 }
 
 console.log(`\n1-element list contains() 1? ${dlist.contains(1)}`);
@@ -109,7 +109,7 @@ if (last3) {
 
 let find3 = dlist.find(7);
 if (find3) {
-    console.log("\nList with several element contains 7?: Yes -->", find3.item);
+    console.log("\nList with several element contains 7?: Yes -->", find3);
 }
 
 console.log(`\nMany element-list contains() 7? ${dlist.contains(7)}`);
