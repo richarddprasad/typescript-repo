@@ -79,3 +79,16 @@ try {
     console.log(e);
 }
 
+console.log("\nConnecting SF and Reno to Sac...");
+sf.addEdge(sac);
+reno.addEdge(sac);
+graphStatus();
+
+console.log("\nDeleting vertex 'Sacramento'...");
+try {
+    graph.removeVertex(sac);
+} catch(e) {
+    console.log(e);
+}
+graphStatus();
+

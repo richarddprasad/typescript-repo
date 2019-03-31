@@ -34,11 +34,20 @@ class Graph {
         if (!this.adjacencyList.contains(vertex)) {
             throw new Error("Vertex not found in the adjacency list");
         } else {
+            // Delete all edges connecting this vertex to any others 
             vertex.getEdges().forEach((v: Vertex) => {
-                // TODO: Finish implementation
                 let temp = this.adjacencyList.find(v);
+
+                // console.log(`FOUND ${v.getName()}`);
+
+                if (temp) {
+                    temp.removeEdge(vertex);
+                }
             });
-        }
+
+            // Delete the vertex itself
+            this.adjacencyList.delete(vertex);
+        } // end else
     }
 
     public addEdge(vertex1: Vertex, vertex2: Vertex): void {
