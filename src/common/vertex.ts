@@ -21,6 +21,19 @@ class Vertex implements Hash {
         return rv;
     }
 
+    public getName(): string {
+        return this.name;
+    }
+
+    public addEdge(v: Vertex): void {
+        this.edges.push(v.getName());
+    }
+
+    public removeEdge(v: Vertex): void {
+        const vKey = v.getName();
+        this.edges = this.edges.filter((name: string) => name !== vKey);
+    }
+
     // For debugging
     public vertexDetail(): void {
         const edges = this.edges.join(", ")
