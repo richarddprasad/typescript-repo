@@ -89,15 +89,33 @@ class DLList<T> {
         return this.find(item) ? true : false;
     }
 
-    public find(item: T): DNode<T> | null {
-        let rv: DNode<T> | null = null;
+    // public find(item: T): DNode<T> | null {
+    //     let rv: DNode<T> | null = null;
+    //     let current: DNode<T> | null = null;
+
+    //     if (!this.isEmpty() && this.head) {
+    //         current = this.head.next;
+    //         while (current && current !== this.tail) {
+    //             if (current.item === item) {
+    //                 rv = current;
+    //                 break;
+    //             }
+    //             current = current.next;
+    //         }
+    //     }
+    //     return rv;
+    // }
+
+    // find() should return the item, not the node
+    public find(item: T): T | null {
+        let rv: T | null = null;
         let current: DNode<T> | null = null;
 
         if (!this.isEmpty() && this.head) {
             current = this.head.next;
             while (current && current !== this.tail) {
                 if (current.item === item) {
-                    rv = current;
+                    rv = current.item;
                     break;
                 }
                 current = current.next;

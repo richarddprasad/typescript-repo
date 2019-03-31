@@ -11,38 +11,36 @@ console.log("Creating an undirected, unweighted graph...");
 const graph = new Graph();
 graphStatus();
 
-let v1 = new Vertex("Sacramento", ["San Francisco", "Portland", "Reno"]);
-v1.vertexDetail();
+const sac = new Vertex("Sacramento");
+const sf = new Vertex("San Francisco");
+const reno = new Vertex("Reno");
+const la = new Vertex("Los Angeles");
+const seattle = new Vertex("Seattle");
+const portland = new Vertex("Portland");
+
+sac.addEdge(sf);
+sac.addEdge(reno);
+
+sac.vertexDetail();
 console.log("Inserting 1st vertex...");
-graph.addVertex(v1);
+graph.addVertex(sac);
 graphStatus();
 
 console.log("Inserting several vertices...");
-v1 = new Vertex("Roseville", ["Sacramento", "Reno", "Portland"]);
-graph.addVertex(v1);
-v1 = new Vertex("Portland", ["Sacramento", "Seattle"]);
-graph.addVertex(v1);
-v1 = new Vertex("San Francisco", ["Sacramento", "Reno", "Los Angeles"]);
-graph.addVertex(v1);
-v1 = new Vertex("Los Angeles", ["San Francisco"]);
-graph.addVertex(v1);
-let reno = new Vertex("Reno", []);
-graph.addVertex(reno);
-let seattle = new Vertex("Seattle", []);
-graph.addVertex(seattle);
+graph.addVertices([sf, reno, la, seattle, portland]);
 graphStatus();
 
 console.log("Inserting a duplicate vertex into the list...");
 try {
-    graph.addVertex(v1);
+    graph.addVertex(sac);
 } catch (e) {
     console.log(e);
 }
 
 console.log("\nCreating edge between non-existent vertices...");
 try {
-    let v1 = new Vertex("New York City", []);
-    let v2 = new Vertex("New Jersey", []);
+    let v1 = new Vertex("New York City");
+    let v2 = new Vertex("New Jersey");
     graph.addEdge(v1, v2);
 } catch (e) {
     console.log(e);
@@ -58,8 +56,8 @@ graphStatus();
 
 console.log("\nRemoving edge between non-existent vertices...");
 try {
-    let v1 = new Vertex("New York City", []);
-    let v2 = new Vertex("New Jersey", []);
+    let v1 = new Vertex("New York City");
+    let v2 = new Vertex("New Jersey");
     graph.removeEdge(v1, v2);
 } catch (e) {
     console.log(e);
@@ -72,3 +70,12 @@ try {
     console.log(e);
 }
 graphStatus();
+
+console.log("\nAttempting to delete a non-existent vertex...");
+try {
+    let v1 = new Vertex("Miami");
+    graph.removeVertex(v1);
+} catch (e) {
+    console.log(e);
+}
+

@@ -35,7 +35,12 @@ class HashTable<T> {
         return this.buckets[hashIndex].contains(item);
     }
 
-    public find(item: T & Hash): DNode<T> | null {
+    // public find(item: T & Hash): DNode<T> | null {
+    //     let hashIndex = item.hash(this.max);
+    //     return this.buckets[hashIndex].find(item);
+    // }
+
+    public find(item: T & Hash): T | null {
         let hashIndex = item.hash(this.max);
         return this.buckets[hashIndex].find(item);
     }

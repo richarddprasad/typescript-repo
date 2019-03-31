@@ -24,7 +24,11 @@ class Bucket<T> {
         return this.list.contains(item);
     }
 
-    public find(item: T): DNode<T> | null {
+    // public find(item: T): DNode<T> | null {
+    //     return this.list.find(item);
+    // }
+
+    public find(item: T): T | null {
         return this.list.find(item);
     }
 

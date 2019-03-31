@@ -2,11 +2,11 @@ import Hash from './hash';
 
 class Vertex implements Hash {
     private name: string;
-    private edges: string[];
+    private edges: Vertex[];
 
-    constructor(name: string, edges: string[]) {
+    constructor(name: string) {
         this.name = name;
-        this.edges = edges;
+        this.edges = new Array<Vertex>();
     }
 
     hash(ht_size: number): number {
@@ -25,19 +25,22 @@ class Vertex implements Hash {
         return this.name;
     }
 
-    public addEdge(v: Vertex): void {
-        this.edges.push(v.getName());
+    public getEdges(): Vertex[] {
+        return this.edges;
     }
 
-    public removeEdge(v: Vertex): void {
-        const vKey = v.getName();
-        this.edges = this.edges.filter((name: string) => name !== vKey);
+    public addEdge(vertex: Vertex): void {
+        this.edges.push(vertex);
+    }
+
+    public removeEdge(vertex: Vertex): void {
+        this.edges = this.edges.filter((v: Vertex) => v !== vertex);
     }
 
     // For debugging
     public vertexDetail(): void {
-        const edges = this.edges.join(", ")
-        console.log(`*** EDGE STR LEN = ${edges.length} ***`);
+        const edges = this.edges.map((v: Vertex) => v.getName()).join(", ");
+        console.log(`*** EDGE ARR LEN = ${this.edges.length} ***`);
         console.log(`${this.name} is connected to ${edges}`);
     }
 }

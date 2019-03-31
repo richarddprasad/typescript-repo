@@ -61,7 +61,8 @@ htStatus();
 console.log("Testing find() for 'Homer Simpson'...");
 let find1 = ht.find(p1);
 if (find1) {
-    let obj = find1.item;
+    // let obj = find1.item;
+    let obj = find1;
     console.log(obj);
 }
 
@@ -77,13 +78,15 @@ htStatus();
 console.log("Testing find() on slot with collision...");
 let find2 = ht.find(p2);
 if (find2) {
-    let obj = find2.item;
+    // let obj = find2.item;
+    let obj = find2
     console.log("Found:")
     console.log(obj);
 }
 find2 = ht.find(p4);
 if (find2) {
-    let obj = find2.item;
+    // let obj = find2.item;
+    let obj = find2
     console.log("Found:")
     console.log(obj);
 }

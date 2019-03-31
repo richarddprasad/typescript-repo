@@ -11,11 +11,33 @@ class Graph {
         this.adjacencyList = new HashTable<Vertex>(HT_SIZE);
     }
 
+    private getVertex(v: Vertex): Vertex | null {
+        let rv: Vertex | null;
+        rv = this.adjacencyList.find(v);
+        return rv;
+    }
+
     public addVertex(vertex: Vertex): void {
         if (this.adjacencyList.contains(vertex)) {
             throw new Error("Vertex is already in the adjacency list");
         } else {
             this.adjacencyList.insert(vertex);
+        }
+    }
+
+    // No method overloading?
+    public addVertices(vertices: Vertex[]): void {
+        vertices.forEach((v: Vertex) => this.adjacencyList.insert(v));
+    }
+
+    public removeVertex(vertex: Vertex): void {
+        if (!this.adjacencyList.contains(vertex)) {
+            throw new Error("Vertex not found in the adjacency list");
+        } else {
+            vertex.getEdges().forEach((v: Vertex) => {
+                // TODO: Finish implementation
+                let temp = this.adjacencyList.find(v);
+            });
         }
     }
 
