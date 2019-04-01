@@ -43,3 +43,15 @@ console.log(`contains(${4})?: ${bst.contains(4)}`);
 console.log(`contains(${2})?: ${bst.contains(2)}`);
 console.log(`contains(${43})?: ${bst.contains(43)}`);
 console.log(`contains(${42})?: ${bst.contains(42)}`);
+
+console.log("\nPre-order depth-first traversal test...");
+let res1 = bst.dfs_preorder();
+console.log(res1);
+
+console.log("\nPost-order depth-first traversal test...");
+res1 = bst.dfs_postorder();
+console.log(res1);
+
+console.log("\nIn-order depth-first traversal test...");
+res1 = bst.dfs_inorder();
+console.log(res1);

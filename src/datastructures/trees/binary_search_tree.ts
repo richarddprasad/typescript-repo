@@ -67,29 +67,66 @@ class BinarySearchTree<T> {
         return this.find(item) == null ? false : true;
     }
 
-    // TODO: Finish after refactoring data structures
-    // Might as well try an interative version for once
-    // public bfs(): Array<T> | null {
-    //     let data = new QueueList<T>();
-    //     let current = this.root;
+    public dfs_preorder(): Array<T> | null {
+        let data = new QueueList<T>();
 
-    //     // Use a closure
-    //     function traverse(node: TNode<T>) {
-    //         data.enqueue(node.item);
-    //         if(node.left) traverse(node.left);
-    //         if(node.right) traverse(node.right);
-    //     }
+        // Use a closure and dump everything into a queue
+        function traverse(node: TNode<T>) {
+            data.enqueue(node.item);
+            if (node.left) traverse(node.left);
+            if (node.right) traverse(node.right);
+        }
+        if (this.root) traverse(this.root);
 
-    //     if(current) traverse(current);
-        
-    //     if(data.isEmpty()) return null;
+        let rv = new Array<T>();
+        let t;
+        // Pull everything out of the queue into a JS array and return it
+        while (!data.isEmpty()) {
+            t = data.dequeue();
+            if (t) rv.push(t);
+        }
+        return rv;
+    }
 
-    //     let rv = new Array<Node<T> | null>();
-    //     while(!data.isEmpty()) {
-    //         rv.push(data.dequeue());
-    //     }
-    //     return rv;
-    // }  
+    public dfs_postorder(): Array<T> | null {
+        let data = new QueueList<T>();
+
+        function traverse(node: TNode<T>) {
+            if (node.left) traverse(node.left);
+            if (node.right) traverse(node.right);
+            data.enqueue(node.item);
+        }
+        if (this.root) traverse(this.root);
+
+        let rv = new Array<T>();
+        let t;
+        while (!data.isEmpty()) {
+            t = data.dequeue();
+            if (t) rv.push(t);
+        }
+        return rv;
+    }
+
+    // Duplicate of private method _inOrderTraversal, but this
+    // one returns an array of values
+    public dfs_inorder(): Array<T> | null {
+        let data = new QueueList<T>();
+
+        function traverse(node: TNode<T>) {
+            if (node.left) traverse(node.left);
+            data.enqueue(node.item);
+            if (node.right) traverse(node.right);
+        }
+        if (this.root) traverse(this.root);
+
+        let rv = new Array<T>();
+        let t;
+        while (!data.isEmpty()) {
+            t = data.dequeue();
+            if (t) rv.push(t);
+        }
+        return rv;
+    }
 
     private _inOrderTraversal(root: TNode<T> | null): void {
         if (root != null) {
