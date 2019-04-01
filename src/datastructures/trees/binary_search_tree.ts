@@ -32,6 +32,39 @@ class BinarySearchTree<T> {
         return root;
     }
 
+    public find(item: T): T | null {
+        let rv: T | null = null;
+        let temp = this._find(item, this.root);
+        if (temp) {
+            rv = temp.item;
+        }
+        return rv;
+    }
+
+    private _find(item: T, root: TNode<T> | null): TNode<T> | null {
+        if (root == null) {
+            // console.log(`*** BASE CASE root=${root} item=${item} ***`);
+            return null;
+        }
+
+        if (item === root.item) {
+            // console.log(`*** FOUND root=${root} item=${item} ***`);
+            return root;
+        }
+
+        if (item <= root.item) {
+            // console.log(`*** root=${root.item} item=${item} GOING LEFT ***`);
+            return this._find(item, root.left);
+        }
+
+        // console.log(`*** root=${root.item} item=${item} GOING RIGHT ***`);
+        return this._find(item, root.right);
+    }
+
+    public contains(item: T): boolean {
+        return this.find(item) == null ? false : true;
+    }
+
     private _inOrderTraversal(root: TNode<T> | null): void {
         if (root != null) {
             this._inOrderTraversal(root.left);
