@@ -1,4 +1,6 @@
 import TNode from '../../common/tnode';
+import QueueList from '../queues/queue_list';
+import Node from '../../common/node';
 
 class BinarySearchTree<T> {
     private root: TNode<T> | null;
@@ -64,6 +66,30 @@ class BinarySearchTree<T> {
     public contains(item: T): boolean {
         return this.find(item) == null ? false : true;
     }
+
+    // TODO: Finish after refactoring data structures
+    // Might as well try an interative version for once
+    // public bfs(): Array<T> | null {
+    //     let data = new QueueList<T>();
+    //     let current = this.root;
+
+    //     // Use a closure
+    //     function traverse(node: TNode<T>) {
+    //         data.enqueue(node.item);
+    //         if(node.left) traverse(node.left);
+    //         if(node.right) traverse(node.right);
+    //     }
+
+    //     if(current) traverse(current);
+        
+    //     if(data.isEmpty()) return null;
+
+    //     let rv = new Array<Node<T> | null>();
+    //     while(!data.isEmpty()) {
+    //         rv.push(data.dequeue());
+    //     }
+    //     return rv;
+    // }  
 
     private _inOrderTraversal(root: TNode<T> | null): void {
         if (root != null) {
