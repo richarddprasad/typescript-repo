@@ -37,15 +37,15 @@ class DLList<T> {
         }
     }
 
-    public getFirst(): DNode<T> | null {
+    public getFirst(): T | null {
         let rv: DNode<T> | null = null;
         if (!this.isEmpty() && this.head) {
             rv = this.head.next;
         }
-        return rv;
+        return rv && rv.item ? rv.item : null;
     }
 
-    public deleteFirst(): DNode<T> | null {
+    public deleteFirst(): T | null {
         let rv: DNode<T> | null = null;
         if (!this.isEmpty() && this.head) {
             let temp = this.head.next;
@@ -58,10 +58,10 @@ class DLList<T> {
                 rv = temp;
             }
         }
-        return rv;
+        return rv && rv.item ? rv.item : null;
     }
 
-    public deleteLast(): DNode<T> | null {
+    public deleteLast(): T | null {
         let rv: DNode<T> | null = null;
         if (!this.isEmpty() && this.tail) {
             let temp = this.tail.prev;
@@ -74,15 +74,15 @@ class DLList<T> {
                 rv = temp;
             }
         }
-        return rv;
+        return rv && rv.item ? rv.item : null;
     }
 
-    public getLast(): DNode<T> | null {
+    public getLast(): T | null {
         let rv: DNode<T> | null = null;
         if (!this.isEmpty() && this.tail) {
             rv = this.tail.prev;
         }
-        return rv;
+        return rv && rv.item ? rv.item : null;
     }
 
     public contains(item: T): boolean {
@@ -125,7 +125,7 @@ class DLList<T> {
     }
 
     // This code is so much simpler in C++ or Java...
-    public delete(item: T): DNode<T> | null {
+    public delete(item: T): T | null {
         let rv: DNode<T> | null = null;
 
         // if (!this.isEmpty() && this.contains(item)) {
@@ -165,7 +165,7 @@ class DLList<T> {
             }
         }
 
-        return rv;
+        return rv && rv.item ? rv.item : null;
     }
 
     // Debugger method

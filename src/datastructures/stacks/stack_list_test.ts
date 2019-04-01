@@ -23,13 +23,16 @@ stackStatus();
 console.log("Popping 1st element...");
 let popped1 = stackList.pop();
 if (popped1) {
-    console.log(`Popped ${popped1.item}`);
+    console.log(`Popped ${popped1}`);
 }
 stackStatus();
 
 console.log("Trying to pop again... uncomment to get stack underflow error");
-// stackList.pop();
-
+try {
+    stackList.pop();
+} catch(e) {
+    console.log(e);
+}
 
 console.log("\nPushing several elements...");
 for (let i: number = 1; i <= 10; i++) {
@@ -42,20 +45,24 @@ let popped2 = null;
 while (!stackList.isEmpty()) {
     popped2 = stackList.pop();
     if (popped2) {
-        console.log(`Popped ${popped2.item}`);
+        console.log(`Popped ${popped2}`);
     }
 }
 stackStatus();
 
 console.log("\nPeeking into empty stack... (should crash)");
-// stackList.peek();
+try {
+    stackList.peek();
+} catch(e) {
+    console.log(e);
+}
 
 console.log("\nPeeking into stack with 1 element...");
 stackList.push(42);
 stackStatus();
 let peeked1 = stackList.peek();
 if (peeked1) {
-    console.log("Got back ", peeked1.item);
+    console.log("Got back ", peeked1);
 }
 
 console.log("\nPeeking into stack with 2 elements...");
@@ -63,5 +70,5 @@ stackList.push(73);
 stackStatus();
 let peeked2 = stackList.peek();
 if (peeked2) {
-    console.log("Got back ", peeked2.item);
+    console.log("Got back ", peeked2);
 }

@@ -16,7 +16,7 @@ class Bucket<T> {
         this.list.insert(item);
     }
 
-    public delete(item: T): DNode<T> | null {
+    public delete(item: T): T | null {
         return this.list.delete(item);
     }
 

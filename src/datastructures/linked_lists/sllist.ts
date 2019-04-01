@@ -78,7 +78,7 @@ class SLList<T> {
 
     // This method deletes a particular item
     // and returns it to the client
-    public delete(item: T): Node<T> | null {
+    public delete(item: T): T | null {
         let rv: Node<T> | null = null;
 
         if (this.contains(item)) {
@@ -94,13 +94,13 @@ class SLList<T> {
             }
         }
 
-        return rv;
+        return rv && rv.item ? rv.item : null;
 
     } // end fn delete
 
     // This method deletes the last element in the list
     // and returns it to the client
-    public deleteLast(): Node<T> | null {
+    public deleteLast(): T | null {
         let rv: Node<T> | null = null;
 
         if (!this.isEmpty()) {
@@ -119,11 +119,11 @@ class SLList<T> {
                 rv.next = null;
             }
         }
-        return rv;
+        return rv && rv.item ? rv.item : null;
     }
 
     // This method returns a copy of the last node
-    public getLast(): Node<T> | null {
+    public getLast(): T | null {
         let lastNode: Node<T> | null = null;
 
         if (!this.isEmpty()) {
@@ -133,11 +133,11 @@ class SLList<T> {
             }
         }
 
-        return lastNode ? new Node<T>(lastNode.item) : lastNode;
+        return lastNode && lastNode.item ? lastNode.item : null;
     } // end fn getLast
 
     // This method removes the first node and returns it to the client
-    public deleteFirst(): Node<T> | null {
+    public deleteFirst(): T | null {
         let rv: Node<T> | null = null;
 
         if (!this.isEmpty()) {
@@ -148,11 +148,11 @@ class SLList<T> {
             }
         }
 
-        return rv;
+        return rv && rv.item ? rv.item : null;
     } // end fn deleteFirst
 
     // This method returns a copy of the first node
-    public getFirst(): Node<T> | null {
+    public getFirst(): T | null {
         let rv: Node<T> | null = null;
 
         if (!this.isEmpty() && this.head) {
@@ -161,7 +161,7 @@ class SLList<T> {
             }
         }
 
-        return rv;
+        return rv && rv.item ? rv.item : null;
     }
 
     // ************************************

@@ -25,7 +25,7 @@ class HashTable<T> {
         this.buckets[hashIndex].insert(item);
     }
 
-    public delete(item: T & Hash): DNode<T> | null {
+    public delete(item: T & Hash): T | null {
         let hashIndex = item.hash(this.max);
         return this.buckets[hashIndex].delete(item);
     }

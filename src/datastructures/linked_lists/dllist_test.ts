@@ -57,13 +57,13 @@ listStatus();
 console.log("\nGetting first element from non-empty list...");
 let first2 = dlist.getFirst();
 if (first2) {
-    console.log("Got back", first2.item);
+    console.log("Got back", first2);
 }
 
 console.log("Getting last element from non-empty list...");
 let last2 = dlist.getLast();
 if (last2) {
-    console.log("Got back", last2.item);
+    console.log("Got back", last2);
 }
 
 let find2 = dlist.find(1);
@@ -77,7 +77,7 @@ console.log(`\n1-element list contains() 1? ${dlist.contains(1)}`);
 console.log("\nDeleting 1 from empty list...");
 let del2 = dlist.delete(1);
 if (del2) {
-    console.log("Deleted 1 from 1-element list -->", del2.item);
+    console.log("Deleted 1 from 1-element list -->", del2);
 }
 listStatus();
 
@@ -98,13 +98,13 @@ listStatus();
 console.log("\nGetting first element from non-empty list with several elements...");
 let first3 = dlist.getFirst();
 if (first3) {
-    console.log("Got back", first3.item);
+    console.log("Got back", first3);
 }
 
 console.log("Getting last element from non-empty list with several elements...");
 let last3 = dlist.getLast();
 if (last3) {
-    console.log("Got back", last3.item);
+    console.log("Got back", last3);
 }
 
 let find3 = dlist.find(7);
@@ -118,14 +118,14 @@ const num = 7;
 console.log(`\nDeleting ${num} from non-empty list...`);
 let del3 = dlist.delete(num);
 if (del3) {
-    console.log(`Deleted ${num} from 1-element list -->`, del3.item);
+    console.log(`Deleted ${num} from 1-element list -->`, del3);
 }
 listStatus();
 
 console.log(`\ndeleteFirst() on non-empty list...`);
 let delFirst2 = dlist.deleteFirst();
 if (delFirst2) {
-    console.log(`Deleted ${delFirst2.item} from non-empty list`);
+    console.log(`Deleted ${delFirst2} from non-empty list`);
 }
 listStatus();
 
@@ -136,7 +136,7 @@ let t1;
 while (!dlist.isEmpty()) {
     t1 = dlist.deleteFirst();
     if (t1) {
-        console.log(`Deleting ${t1.item}`);
+        console.log(`Deleting ${t1}`);
     }
 }
 listStatus();
@@ -152,7 +152,7 @@ dlist.insert(1);
 listStatus();
 let delLast2 = dlist.deleteLast();
 if (delLast2) {
-    console.log(`\ndeleteLast() on 1-element list --> ${delLast2.item}`);
+    console.log(`\ndeleteLast() on 1-element list --> ${delLast2}`);
 }
 listStatus();
 
@@ -163,7 +163,7 @@ dlist.insert(3);
 listStatus();
 let delLast3 = dlist.deleteLast();
 if (delLast3) {
-    console.log(`\ndeleteLast() on several-element list --> ${delLast3.item}`);
+    console.log(`\ndeleteLast() on several-element list --> ${delLast3}`);
 }
 listStatus();
 
@@ -172,7 +172,7 @@ let t2;
 while (!dlist.isEmpty()) {
     t2 = dlist.deleteLast();
     if (t2) {
-        console.log(`Deleted ${t2.item}`);
+        console.log(`Deleted ${t2}`);
     }
 }
 listStatus();

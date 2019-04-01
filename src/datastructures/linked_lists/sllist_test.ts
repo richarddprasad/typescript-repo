@@ -47,7 +47,7 @@ console.log("\nDeleting 10 (does exist)...");
 let test4 = slist.delete(10);
 console.log("Deleting 10 successful?: ", test4 != null);
 if (test4) {
-    console.log("Value of deleted node (10): ", test4.item);
+    console.log("Value of deleted node (10): ", test4);
 }
 listStatus();
 
@@ -67,7 +67,7 @@ let removed;
 while (!slist.isEmpty()) {
     removed = slist.deleteLast();
     if (removed) {
-        console.log(`Removed ${removed.item}`);
+        console.log(`Removed ${removed}`);
     }
 }
 listStatus();
@@ -85,7 +85,7 @@ listStatus();
 console.log("Getting last element...");
 let last2 = slist.getLast();
 if (last2) {
-    console.log("Last item: ", last2.item);
+    console.log("Last item: ", last2);
 }
 
 console.log("\nInserting a few more elements and testing getLast()...");
@@ -94,14 +94,14 @@ slist.insert(1024);
 listStatus();
 let last3 = slist.getLast();
 if (last3) {
-    console.log("getLast() returned: ", last3.item);
+    console.log("getLast() returned: ", last3);
 }
 
 console.log("\nTesting deleteFirst()...");
 let del1 = slist.deleteFirst();
 listStatus();
 if (del1) {
-    console.log("Removed", del1.item);
+    console.log("Removed", del1);
 }
 
 console.log("\nCalling deleteFirst() 2 more times...");
@@ -109,7 +109,7 @@ slist.deleteFirst();
 let del2 = slist.deleteFirst();
 listStatus();
 if (del2) {
-    console.log("Removed item is", del2.item);
+    console.log("Removed item is", del2);
 }
 
 console.log("\nTesting deleteFirst() on empty list...");
@@ -130,7 +130,7 @@ slist.insert(2019);
 let test6 = slist.getFirst();
 listStatus();
 if (test6) {
-    console.log("Got", test6.item);
+    console.log("Got", test6);
 }
 
 console.log("\nTesting getFirst() on list with 2 elements...");
@@ -138,5 +138,5 @@ slist.insert(3001);
 let test7 = slist.getFirst();
 listStatus();
 if (test7) {
-    console.log("Got", test7.item);
+    console.log("Got", test7);
 }

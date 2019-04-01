@@ -16,15 +16,15 @@ class QueueList<T> {
         this.list.insert(item);
     }
 
-    public dequeue(): Node<T> | null {
+    public dequeue(): T | null {
         if (this.list.isEmpty()) {
             throw new Error("Queue underflow");
         }
         return this.list.deleteFirst();
     }
 
-    public peek(): Node<T> | null {
-        let rv: Node<T> | null = null;
+    public peek(): T | null {
+        let rv: T | null = null;
 
         if (!this.list.isEmpty()) {
             rv = this.list.getFirst();

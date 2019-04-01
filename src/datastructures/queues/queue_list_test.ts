@@ -13,10 +13,12 @@ const queueList = new QueueList<number>();
 console.log("Creating a new queue...");
 queueStatus();
 
-// TODO: Test enqueue, dequeue, peek
-
 console.log("\nDequeue on empty queue (should crash)...");
-// queueList.dequeue();
+try {
+    queueList.dequeue();
+} catch(e) {
+    console.log(e);
+}
 
 console.log("\nEnqueue 1st element...");
 queueList.enqueue(1);
@@ -26,7 +28,7 @@ console.log("\nDequeue queue with 1 element...");
 let del1 = queueList.dequeue();
 queueStatus();
 if (del1) {
-    console.log("Removed", del1.item);
+    console.log("Removed", del1);
 }
 
 console.log("\nEnqueue-ing several items...");
@@ -40,20 +42,24 @@ let temp;
 while (!queueList.isEmpty()) {
     temp = queueList.dequeue();
     if (temp) {
-        console.log(`Removed ${temp.item}`);
+        console.log(`Removed ${temp}`);
     }
 }
 queueStatus();
 
 console.log("\nPeeking into empty queue... (should crash)");
-// queueList.peek();
+try {
+    queueList.peek();
+} catch(e) {
+    console.log(e);
+}
 
 console.log("\nPeeking into queue with 1 element...");
 queueList.enqueue(2);
 let peek1 = queueList.peek();
 queueStatus();
 if (peek1) {
-    console.log("Got", peek1.item);
+    console.log("Got", peek1);
 }
 
 console.log("\nPeeking into queue with 2 elements...");
@@ -61,5 +67,5 @@ queueList.enqueue(3);
 let peek2 = queueList.peek();
 queueStatus();
 if (peek2) {
-    console.log("Got", peek2.item);
+    console.log("Got", peek2);
 }

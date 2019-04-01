@@ -16,8 +16,8 @@ class StackList<T> {
         this.list.insert(item);
     }
 
-    public pop(): Node<T> | null {
-        let rv: Node<T> | null = null;
+    public pop(): T | null {
+        let rv: T | null = null;
 
         if (!this.isEmpty()) {
             rv = this.list.deleteLast();
@@ -27,8 +27,8 @@ class StackList<T> {
         return rv;
     }
 
-    public peek(): Node<T> | null {
-        let rv: Node<T> | null = null;
+    public peek(): T | null {
+        let rv: T | null = null;
 
         if (!this.isEmpty()) {
             rv = this.list.getLast();
