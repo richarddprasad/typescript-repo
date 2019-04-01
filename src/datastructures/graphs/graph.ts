@@ -68,6 +68,29 @@ class Graph {
         vertex2.removeEdge(vertex1);
     }
 
+    public traverse_dfs(startVertex: Vertex): Array<Vertex> {
+        // The vertices in the order we visited them
+        let vertices: Array<Vertex> = new Array<Vertex>();
+        // Used to keep track of which vertices we already visited
+        let visited: HashTable<Vertex> = new HashTable<Vertex>(HT_SIZE);
+        // Preserve reference to the adjacency list
+        const adjList = this.adjacencyList;
+
+        // Helper function
+        (function helper(v: Vertex) {
+            // Base case
+            if(!v) return null;
+
+            visited.insert(v);
+            vertices.push(v);
+
+            // TODO: Finish implementation after implementing HashTable.getAll()...
+            // adjList.
+        })(startVertex);
+
+        return vertices;
+    }
+
     // For debugging
     public printContents(): void {
         this.adjacencyList.printContents();

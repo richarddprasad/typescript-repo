@@ -168,6 +168,19 @@ class DLList<T> {
         return rv && rv.item ? rv.item : null;
     }
 
+    public getAll(): T[] {
+        let rv: T[] = new Array<T>();
+
+        if (!this.isEmpty() && this.head && this.head.next) {
+            let current = this.head.next;
+            while (current && current.next && current !== this.tail) {
+                if (current.item) rv.push(current.item);
+                current = current.next;
+            }
+        }
+        return rv;
+    }
+
     // Debugger method
     public printContents(): void {
         if (!this.isEmpty() && this.head) {

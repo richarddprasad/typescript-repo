@@ -1,6 +1,6 @@
 import Bucket from './bucket';
 import Hash from '../../common/hash';
-import DNode from '../../common/dnode';
+// import DNode from '../../common/dnode';
 
 class HashTable<T> {
     private buckets: Array<Bucket<T>>;
@@ -43,6 +43,25 @@ class HashTable<T> {
     public find(item: T & Hash): T | null {
         let hashIndex = item.hash(this.max);
         return this.buckets[hashIndex].find(item);
+    }
+
+    public getAll(): T[] {
+        let rv: T[] = new Array<T>();
+
+        let temp;
+        for (let i: number = 0; i < this.max; i++) {
+            temp = this.buckets[i].getAll();
+            
+            // *** DEBUG ***
+            // console.log(`Bucket ${i} contains:`);
+            // temp.forEach((el: T) => console.log(el));
+            // console.log("**********");
+            // *** END DEBUG ***
+            
+            temp.forEach((item: T) => rv.push(item));
+        }
+
+        return rv;
     }
 
     // For debugging

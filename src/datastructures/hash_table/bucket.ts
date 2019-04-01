@@ -32,6 +32,10 @@ class Bucket<T> {
         return this.list.find(item);
     }
 
+    public getAll(): T[] {
+        return this.list.getAll();
+    }
+
     // For debugging
     public printContents(): void {
         this.list.printContents();

@@ -87,8 +87,18 @@ graphStatus();
 console.log("\nDeleting vertex 'Sacramento'...");
 try {
     graph.removeVertex(sac);
-} catch(e) {
+} catch (e) {
     console.log(e);
 }
 graphStatus();
 
+console.log("\nRe-inserting Sacramento and creating various edges...")
+graph.addVertex(sac);
+try {
+    graph.addEdge(seattle, portland);
+    graph.addEdge(portland, sac);
+    graph.addEdge(sf, la);
+} catch (e) {
+    console.log(e);
+}
+graphStatus();

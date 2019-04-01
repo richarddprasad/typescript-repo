@@ -177,3 +177,14 @@ while (!dlist.isEmpty()) {
 }
 listStatus();
 
+// *************************************************************
+console.log("\nTesting getAll() on empty list...");
+listStatus();
+let contents = dlist.getAll();
+console.log(`Contents: ${contents}`);
+
+console.log("\nInserting 1-10 and testing getAll()...");
+for(let i: number = 1; i <= 10; i++) dlist.insert(i);
+listStatus();
+contents = dlist.getAll();
+console.log(`Contents: ${contents}`);

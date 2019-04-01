@@ -75,7 +75,7 @@ if (!find1) {
 }
 htStatus();
 
-console.log("Testing find() on slot with collision...");
+console.log("TESTING find() on slot with collision...");
 let find2 = ht.find(p2);
 if (find2) {
     // let obj = find2.item;
@@ -90,3 +90,8 @@ if (find2) {
     console.log("Found:")
     console.log(obj);
 }
+
+// *******************************************************
+console.log("\nTESTING getAll()...");
+const contents = ht.getAll();
+contents.forEach((el: any) => console.log(el));
